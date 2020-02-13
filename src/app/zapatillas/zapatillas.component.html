@@ -1,8 +1,63 @@
 <h2>{{titulo}}</h2>
-<p>{{listado}}</p>
+<p>
+    <input type="text" [(ngModel)] = 'mi_marca' (blur) = 'onBlur()' (keyup.enter) = 'addMarca()'>
+</p> 
+<button (click) = 'getMarca()'>mostrar marca</button>
+<button (click) = 'addMarca()'>añadir marca</button>  
+
+<p>mejores marcas  </p>
+    <ul>
+        <li *ngFor = "let marca of marcas; let indice = index"> 
+            {{marca}} 
+            <button (click)= "borrarMarca(indice)"> Eliminar</button>
+        </li>
+    </ul>
+
+<p>CONTAMOS CON: </p>
 <ul>
-    <li>Nike</li>
-    <li>Addidas</li>
-    <li>Pirma</li>
-    <li>Puma</li>
+    <li *ngFor = "let dep of zapatillas">   
+        <span [ngStyle] = "{
+            'text-decoration' : !dep.stock ? 'line-through' : 'none'
+        }"> {{dep.marca}}
+            {{dep.nombre}} -- $<strong [class.altoPrecio] = 'dep.precio >= 3600'
+                [ngClass] = "{
+                    'fondoRojo' : dep.precio >= 5000,
+                    'subrayado' : dep.marca == 'Nike'
+                }"> {{dep.precio}}    </strong>
+        </span>
+        <span *ngIf = 'dep.precio <= 2500'
+        [style.background] = 'dep.precio <= 2500 ? "green" : "transparent" '
+        [style.color] = 'dep.precio <= 2500 ? "white" : "black" '
+        >¡EN OFERTA!</span>
+    </li>
+</ul>
+
+<input type="text" [(ngModel)] = "color"> <br>
+<p>El color de la mayoria de nuestras zapatillas es: </p>
+
+<ul [ngSwitch] = 'color'>   
+    <li *ngSwitchCase = "'yellow'">
+        el colo predominante es el <span [ngStyle] = "{
+            'background' : color,
+            'color' : 'white'
+        }">amarillo</span>.
+    </li>
+    <li *ngSwitchCase = "'red'">
+        el colo predominante es el <span [ngStyle] = "{
+            'background' : color,
+            'color' : 'white'
+        }">rojo</span>.
+    </li>
+    <li *ngSwitchCase = "'blue'">
+        el colo predominante es el <span [ngStyle] = "{
+            'background' : color,
+            'color' : 'white'
+        }">azul</span>.
+    </li>
+    <li *ngSwitchCase = "'orange'">
+        el colo predominante es el <span [ngStyle] = "{
+            'background' : color,
+            'color' : 'white'
+        }">naranja</span>.
+    </li>
 </ul>
