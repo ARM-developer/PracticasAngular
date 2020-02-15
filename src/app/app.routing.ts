@@ -12,9 +12,11 @@ import { HomeComponent } from './home/home.component';
 
 const appRoutes: Routes = [
     {path : '' , component : HomeComponent},
+    {path : 'home' , component : HomeComponent},
     {path : 'zapatillas' , component : ZapatillasComponent },
     {path : 'videojuego' , component : VideojuegosComponent},
     {path : 'curso' , component : CursoComponent},
+    {path : 'curso/:nombre/:followers' , component : CursoComponent},
     {path : '**' , component : HomeComponent}
 ];
 
