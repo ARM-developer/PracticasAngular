@@ -1,0 +1,17 @@
+{{fecha | date : 'dd/MM/yy' }} <br>
+<!-- fullDate fecha completa -->
+{{'hola mundo usando pipes' | uppercase}} <br>
+{{88 | calculadora : 2}}
+
+<hr>
+<input type="text" [(ngModel)] = 'userId' (keyup.enter) = "cargaUsuario()">
+
+<div *ngIf = '!user'>
+    cargando...
+</div>
+
+<div *ngIf = 'user'>
+    <br>
+    <img src="{{user.avatar}}" width="200px">
+    <h2>{{user.first_name + ' ' + user.last_name}}</h2>
+</div>
